@@ -40,7 +40,6 @@ lerna-debug.log*
 /migrations
 /models
 /seeders
-/src/auth
 /src/boiler-parts
 /src/payment
 /src/shopping-cart
