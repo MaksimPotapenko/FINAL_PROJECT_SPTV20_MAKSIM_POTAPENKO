@@ -20,7 +20,7 @@ async function bootstrap() {
         origin: ['http://localhost:3001', 'https://shop-client-ijcw.onrender.com'],
     });
     const config = new swagger_1.DocumentBuilder()
-        .setTitle('Аква термикс')
+        .setTitle('LegoLand')
         .setDescription('api documentation')
         .setVersion('1.0')
         .addTag('api')

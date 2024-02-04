@@ -52,16 +52,16 @@ export class SignupResponse {
   username: string;
 
   @ApiProperty({
-    example: '$2b$10$90H0Hn.6Nx0SbrHQCX2xeeYjq.02nS5VpkIIwFAtDtCHEqHK',
+    example: '$2b$10$3JVv/iT7qmqBZRUDR93FEe4w5ow9J02lBVYoCZrTnm.pEpajiCC/u',
   })
   password: string;
 
   @ApiProperty({ example: 'ivan@gmail.com' })
   email: string;
 
-  @ApiProperty({ example: '2023-03-17T17:23:33.502Z' })
+  @ApiProperty({ example: '2024-02-04T14:02:26.172Z' })
   updatedAt: string;
 
-  @ApiProperty({ example: '2023-03-17T17:23:33.502Z' })
+  @ApiProperty({ example: '2024-02-04T14:02:26.172Z' })
   createdAt: string;
 }
