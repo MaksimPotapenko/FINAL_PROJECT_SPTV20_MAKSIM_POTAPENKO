@@ -36,15 +36,10 @@ lerna-debug.log*
 !.vscode/extensions.json
 .vercel
 
-/config
-/migrations
-/models
-/seeders
-/src/boiler-parts
+
 /src/payment
 /src/shopping-cart
 vercel.json
 /test/controllers/auth.controller.specs.ts
-/test/controllers/boiler-parts.controller.specs.ts
 /test/controllers/payment.controller.specs.ts
 /test/controllers/shopping-cart.controller.specs.ts
