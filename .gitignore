@@ -38,7 +38,6 @@ lerna-debug.log*
 
 
 /src/payment
-/src/shopping-cart
 vercel.json
 /test/controllers/auth.controller.specs.ts
 /test/controllers/payment.controller.specs.ts
