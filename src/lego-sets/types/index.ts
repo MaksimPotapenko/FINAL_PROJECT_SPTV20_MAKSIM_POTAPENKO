@@ -77,7 +77,7 @@ export class GetNewResponse extends PaginateAndFilterResponse {
 }
 
 export class SearchByLetterResponse extends LegoSets {
-  @ApiProperty({ example: 'Comprehendo thymbra.' })
+  @ApiProperty({ example: 'Atqui tantillus.' })
   name: string;
 }
 
@@ -86,17 +86,17 @@ export class SearchResponse extends PaginateAndFilterResponse {
   rows: SearchByLetterResponse;
 }
 export class SearchRequest {
-  @ApiProperty({ example: 'r' })
+  @ApiProperty({ example: 't' })
   search: string;
 }
 
 export class GetByNameResponse extends LegoSets {
-  @ApiProperty({ example: 'Comprehendo thymbra.' })
+  @ApiProperty({ example: 'Atqui tantillus.' })
   name: string;
 }
 
 export class GetByNameRequest {
-  @ApiProperty({ example: 'Comprehendo thymbra.' })
+  @ApiProperty({ example: 'Atqui tantillus.' })
   name: string;
 }
 

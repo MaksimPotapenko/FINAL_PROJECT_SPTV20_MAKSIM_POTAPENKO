@@ -6,7 +6,7 @@ export class LegoSets extends Model {
   theme: string;
 
   @Column({ defaultValue: 0 })
-  price: string;
+  price: number;
 
   @Column
   vendor_code: string;

@@ -14,6 +14,7 @@ const config_1 = require("@nestjs/config");
 const sequelizeConfig_service_1 = require("./config/sequelizeConfig.service");
 const configuration_1 = require("./config/configuration");
 const auth_module_1 = require("./auth/auth.module");
+const shopping_cart_module_1 = require("./shopping-cart/shopping-cart.module");
 const payment_module_1 = require("./payment/payment.module");
 const lego_sets_module_1 = require("./lego-sets/lego-sets.module");
 let AppModule = class AppModule {
@@ -30,6 +31,8 @@ AppModule = __decorate([
             }),
             users_module_1.UsersModule,
             auth_module_1.AuthModule,
+            lego_sets_module_1.LegoSetsModule,
+            shopping_cart_module_1.ShoppingCartModule,
             payment_module_1.PaymentModule,
             lego_sets_module_1.LegoSetsModule,
         ],
