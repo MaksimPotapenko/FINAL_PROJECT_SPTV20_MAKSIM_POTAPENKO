@@ -9,12 +9,6 @@ import { SequelizeConfigService } from 'src/config/sequelizeConfig.service';
 import { User } from 'src/users/users.model';
 import { UsersModule } from 'src/users/users.module';
 
-const mockedUser = {
-  username: 'John',
-  email: 'john@gmail.com',
-  password: 'john123',
-};
-
 describe('Users Controller', () => {
   let app: INestApplication;
 
@@ -37,20 +31,7 @@ describe('Users Controller', () => {
     await app.init();
   });
 
-  beforeEach(async () => {
-    const user = new User();
-
-    const hashedPassword = await bcrypt.hash(mockedUser.password, 10);
-
-    user.username = mockedUser.username;
-    user.password = hashedPassword;
-    user.email = mockedUser.email;
-
-    return user.save();
-  });
-
   afterEach(async () => {
-    await User.destroy({ where: { username: mockedUser.username } });
     await User.destroy({ where: { username: 'Test' } });
   });
 
