@@ -40,3 +40,8 @@ vercel.json
 /test/controllers/auth.controller.specs.ts
 /test/controllers/payment.controller.specs.ts
 /test/controllers/shopping-cart.controller.specs.ts
+/test/controllers/boiler-parts.controller.specs.ts
+/test/providers/shopping-cart.service.specs.ts
+/test/providers/payment.service.specs.ts
+/test/providers/auth.service.specs.ts
+/test/providers/shopping-cart.service.specs.ts
