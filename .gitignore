@@ -36,8 +36,6 @@ lerna-debug.log*
 !.vscode/extensions.json
 .vercel
 
-
-/src/payment
 vercel.json
 /test/controllers/auth.controller.specs.ts
 /test/controllers/payment.controller.specs.ts

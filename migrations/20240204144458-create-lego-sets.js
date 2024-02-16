@@ -7,49 +7,49 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       theme: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       vendor_code: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       description: {
-        type: Sequelize.STRING(2048)
+        type: Sequelize.STRING(2048),
       },
       images: {
-        type: Sequelize.STRING(2048)
+        type: Sequelize.STRING(2048),
       },
       in_stock: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       bestseller: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       new: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       popularity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('LegoSets');
-  }
+  },
 };

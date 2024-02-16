@@ -18,20 +18,17 @@ const theme = [
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     return queryInterface.bulkInsert(
       'LegoSets',
       [...Array(100)].map(() => ({
-        theme: 
-          theme[Math.floor(Math.random() * theme.length)
-          ],
+        theme: theme[Math.floor(Math.random() * theme.length)],
         price: faker.random.numeric(3),
         name: faker.lorem.sentence(2),
         description: faker.lorem.sentence(10),
         images: JSON.stringify(
           [...Array(7)].map(
-            () => 
-            `${faker.image.urlLoremFlickr({ category: 'lego' })}`,
+            () => `${faker.image.urlLoremFlickr({ category: 'lego' })}`,
           ),
         ),
         vendor_code: faker.internet.password(),
@@ -45,7 +42,7 @@ module.exports = {
     );
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     return queryInterface.bulkDelete('LegoSets', null, {});
-  }
+  },
 };
