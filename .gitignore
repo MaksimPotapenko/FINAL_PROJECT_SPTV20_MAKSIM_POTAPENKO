@@ -39,7 +39,5 @@ lerna-debug.log*
 vercel.json
 /test/controllers/payment.controller.specs.ts
 /test/controllers/shopping-cart.controller.specs.ts
-/test/controllers/boiler-parts.controller.specs.ts
-/test/providers/boiler-parts.service.specs.ts
 /test/providers/payment.service.specs.ts
 /test/providers/shopping-cart.service.specs.ts
