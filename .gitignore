@@ -37,5 +37,3 @@ lerna-debug.log*
 .vercel
 
 vercel.json
-/test/controllers/payment.controller.specs.ts
-/test/providers/payment.service.specs.ts
