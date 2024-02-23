@@ -63,9 +63,9 @@ export class ShoppingCartService {
   }
 
   async remove(setId: number | string): Promise<void> {
-    const part = await this.shoppingCartModel.findOne({ where: { setId } });
+    const set = await this.shoppingCartModel.findOne({ where: { setId } });
 
-    await part.destroy();
+    await set.destroy();
   }
 
   async removeAll(userId: number | string): Promise<void> {

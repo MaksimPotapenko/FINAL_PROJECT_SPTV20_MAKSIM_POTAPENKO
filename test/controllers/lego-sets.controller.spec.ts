@@ -80,6 +80,7 @@ describe('Lego Sets Controller', () => {
     expect(response.body).toEqual(
       expect.objectContaining({
         id: 1,
+        theme: expect.any(String),
         price: expect.any(Number),
         vendor_code: expect.any(String),
         name: expect.any(String),
@@ -95,100 +96,103 @@ describe('Lego Sets Controller', () => {
     );
   });
 
-  //   it('should get bestsellers', async () => {
-  //     //получить бестселлер
-  //     const login = await request(app.getHttpServer())
-  //       .post('/users/login')
-  //       .send({ username: mockedUser.username, password: mockedUser.password });
+  it('should get bestsellers', async () => {
+    //получить бестселлер
+    const login = await request(app.getHttpServer())
+      .post('/users/login')
+      .send({ username: mockedUser.username, password: mockedUser.password });
 
-  //     const response = await request(app.getHttpServer())
-  //       .get('/lego-sets/bestsellers')
-  //       .set('Cookie', login.headers['set-cookie']);
+    const response = await request(app.getHttpServer())
+      .get('/lego-sets/bestsellers')
+      .set('Cookie', login.headers['set-cookie']);
 
-  //     expect(response.body.rows).toEqual(
-  //       expect.arrayContaining([
-  //         {
-  //           id: expect.any(Number),
-  //           price: expect.any(Number),
-  //           vendor_code: expect.any(String),
-  //           name: expect.any(String),
-  //           description: expect.any(String),
-  //           images: expect.any(String),
-  //           in_stock: expect.any(Number),
-  //           bestseller: true,
-  //           new: expect.any(Boolean),
-  //           popularity: expect.any(Number),
-  //           createdAt: expect.any(String),
-  //           updatedAt: expect.any(String),
-  //         },
-  //       ]),
-  //     );
-  //   });
+    expect(response.body.rows).toEqual(
+      expect.arrayContaining([
+        {
+          id: expect.any(Number),
+          theme: expect.any(String),
+          price: expect.any(Number),
+          vendor_code: expect.any(String),
+          name: expect.any(String),
+          description: expect.any(String),
+          images: expect.any(String),
+          in_stock: expect.any(Number),
+          bestseller: true,
+          new: expect.any(Boolean),
+          popularity: expect.any(Number),
+          createdAt: expect.any(String),
+          updatedAt: expect.any(String),
+        },
+      ]),
+    );
+  });
 
-  //   it('should get new sets', async () => {
-  //     //получить новый
-  //     const login = await request(app.getHttpServer())
-  //       .post('/users/login')
-  //       .send({ username: mockedUser.username, password: mockedUser.password });
+  it('should get new sets', async () => {
+    //получить новый
+    const login = await request(app.getHttpServer())
+      .post('/users/login')
+      .send({ username: mockedUser.username, password: mockedUser.password });
 
-  //     const response = await request(app.getHttpServer())
-  //       .get('/lego-sets/new')
-  //       .set('Cookie', login.headers['set-cookie']);
+    const response = await request(app.getHttpServer())
+      .get('/lego-sets/new')
+      .set('Cookie', login.headers['set-cookie']);
 
-  //     expect(response.body.rows).toEqual(
-  //       expect.arrayContaining([
-  //         {
-  //           id: expect.any(Number),
-  //           price: expect.any(Number),
-  //           vendor_code: expect.any(String),
-  //           name: expect.any(String),
-  //           description: expect.any(String),
-  //           images: expect.any(String),
-  //           in_stock: expect.any(Number),
-  //           bestseller: expect.any(Boolean),
-  //           new: true,
-  //           popularity: expect.any(Number),
-  //           createdAt: expect.any(String),
-  //           updatedAt: expect.any(String),
-  //         },
-  //       ]),
-  //     );
-  //   });
+    expect(response.body.rows).toEqual(
+      expect.arrayContaining([
+        {
+          id: expect.any(Number),
+          theme: expect.any(String),
+          price: expect.any(Number),
+          vendor_code: expect.any(String),
+          name: expect.any(String),
+          description: expect.any(String),
+          images: expect.any(String),
+          in_stock: expect.any(Number),
+          bestseller: expect.any(Boolean),
+          new: true,
+          popularity: expect.any(Number),
+          createdAt: expect.any(String),
+          updatedAt: expect.any(String),
+        },
+      ]),
+    );
+  });
 
-  //   it('should search by string', async () => {
-  //     const body = { search: 'tas' };
-  //     const login = await request(app.getHttpServer())
-  //       .post('/users/login')
-  //       .send({ username: mockedUser.username, password: mockedUser.password });
+  it('should search by string', async () => {
+    const body = { search: 'tas' };
+    const login = await request(app.getHttpServer())
+      .post('/users/login')
+      .send({ username: mockedUser.username, password: mockedUser.password });
 
-  //     const response = await request(app.getHttpServer())
-  //       .post('/lego-sets/search')
-  //       .send(body)
-  //       .set('Cookie', login.headers['set-cookie']);
+    const response = await request(app.getHttpServer())
+      .post('/lego-sets/search')
+      .send(body)
+      .set('Cookie', login.headers['set-cookie']);
 
-  //     expect(response.body.rows.length).toBeLessThanOrEqual(20);
-  //     response.body.rows.forEach((element) => {
-  //       expect(element.name.toLowerCase()).toContain(body.search);
-  //     });
-  //     expect(response.body.rows).toEqual(
-  //       expect.arrayContaining([
-  //         {
-  // id: expect.any(Number),
-  // price: expect.any(Number),
-  // vendor_code: expect.any(String),
-  // name: expect.any(String),
-  // description: expect.any(String),
-  // images: expect.any(String),
-  // in_stock: expect.any(Number),
-  // bestseller: expect.any(Boolean),
-  // new: expect.any(Boolean),
-  // popularity: expect.any(Number),
-  // createdAt: expect.any(String),
-  // updatedAt: expect.any(String),
-  //         },
-  //       ]),
-  //     );
-  //   });
+    expect(response.body.rows.length).toBeLessThanOrEqual(20);
+    response.body.rows.forEach((element) => {
+      expect(element.name.toLowerCase()).toContain(body.search);
+    });
+    expect(response.body.rows).toEqual(
+      expect.arrayContaining([
+        {
+          id: expect.any(Number),
+          theme: expect.any(String),
+          price: expect.any(Number),
+          vendor_code: expect.any(String),
+          name: expect.any(String),
+          description: expect.any(String),
+          images: expect.any(String),
+          in_stock: expect.any(Number),
+          bestseller: expect.any(Boolean),
+          new: expect.any(Boolean),
+          popularity: expect.any(Number),
+          createdAt: expect.any(String),
+          updatedAt: expect.any(String),
+        },
+      ]),
+    );
+  });
 
   it('should get by name', async () => {
     const body = { name: 'Vilitas administratio.' };
@@ -204,6 +208,7 @@ describe('Lego Sets Controller', () => {
     expect(response.body).toEqual(
       expect.objectContaining({
         id: expect.any(Number),
+        theme: expect.any(String),
         price: expect.any(Number),
         vendor_code: expect.any(String),
         name: 'Vilitas administratio.',
