@@ -17,7 +17,7 @@ async function bootstrap() {
     app.use(passport.session());
     app.enableCors({
         credentials: true,
-        origin: ['http://localhost:3001', 'https://shop-client-ijcw.onrender.com'],
+        origin: ['http://localhost:3001'],
     });
     const config = new swagger_1.DocumentBuilder()
         .setTitle('LegoLand')
