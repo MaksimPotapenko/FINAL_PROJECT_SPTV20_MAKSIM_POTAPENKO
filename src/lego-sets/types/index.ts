@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { ApiProperty } from '@nestjs/swagger';
+import { Op } from 'sequelize';
 
 class LegoSets {
   @ApiProperty({ example: 1 })
@@ -105,4 +106,12 @@ export class FindOneResponse extends LegoSets {}
 export interface ILegoSetsQuery {
   limit: string;
   offset: string;
+  lego: string | undefined;
+  priceFrom: string | undefined;
+  priceTo: string | undefined;
+}
+
+export interface ILegoSetsFilter {
+  theme: string | undefined;
+  price: { [Op.between]: number[] };
 }

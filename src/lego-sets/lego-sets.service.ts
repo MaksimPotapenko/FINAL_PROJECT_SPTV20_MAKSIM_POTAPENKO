@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Op } from 'sequelize';
 import { LegoSets } from './lego-sets.model';
-import { ILegoSetsQuery } from './types';
+import { ILegoSetsFilter, ILegoSetsQuery } from './types';
 
 @Injectable()
 export class LegoSetsService {
@@ -16,9 +16,22 @@ export class LegoSetsService {
   ): Promise<{ count: number; rows: LegoSets[] }> {
     const limit = +query.limit;
     const offset = +query.offset * 20;
+    const filter = {} as Partial<ILegoSetsFilter>;
+
+    if (query.priceFrom && query.priceTo) {
+      filter.price = {
+        [Op.between]: [+query.priceFrom, +query.priceTo],
+      };
+    }
+
+    if (query.lego) {
+      filter.theme = JSON.parse(decodeURIComponent(query.lego));
+    }
+
     return this.legoSetsModel.findAndCountAll({
       limit,
       offset,
+      where: filter,
     });
   }
 
