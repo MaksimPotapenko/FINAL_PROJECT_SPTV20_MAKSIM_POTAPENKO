@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { Table, Model, Column } from 'sequelize-typescript';
 
 @Table
@@ -8,7 +9,7 @@ export class LegoSets extends Model {
   @Column({ defaultValue: 0 })
   price: number;
 
-  @Column
+  @Column({ defaultValue: () => faker.internet.password() })
   vendor_code: string;
 
   @Column
@@ -26,9 +27,9 @@ export class LegoSets extends Model {
   @Column({ defaultValue: false })
   bestseller: boolean;
 
-  @Column({ defaultValue: false })
+  @Column({ defaultValue: true })
   new: boolean;
 
-  @Column
+  @Column({ defaultValue: 1 })
   popularity: number;
 }

@@ -1,7 +1,11 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Get,
+  Header,
+  HttpCode,
+  HttpStatus,
   Param,
   Post,
   Query,
@@ -67,5 +71,24 @@ export class LegoSetsController {
   @Post('name')
   getByName(@Body() { name }: { name: string }) {
     return this.legoSetsService.findOneByName(name);
+  }
+
+  @Post('create')
+  async createLegoSet(
+    @Body('theme') theme: string,
+    @Body('price') price: number,
+    @Body('name') name: string,
+    @Body('description') description: string,
+    @Body('images') images: string[],
+    @Body('in_stock') in_stock: number,
+  ) {
+    return this.legoSetsService.createLegoSet(
+      theme,
+      price,
+      name,
+      description,
+      images,
+      in_stock,
+    );
   }
 }

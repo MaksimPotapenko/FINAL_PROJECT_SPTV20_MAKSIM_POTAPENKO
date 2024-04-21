@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Op } from 'sequelize';
 import { LegoSets } from './lego-sets.model';
 import { ILegoSetsFilter, ILegoSetsQuery } from './types';
+import { faker } from '@faker-js/faker';
 
 @Injectable()
 export class LegoSetsService {
@@ -10,6 +11,21 @@ export class LegoSetsService {
     @InjectModel(LegoSets)
     private legoSetsModel: typeof LegoSets,
   ) {}
+
+  private readonly themes = [
+    'Star Wars',
+    'Batman',
+    'Harry Potter',
+    'Disney',
+    'Marvel',
+    'Lord of the Rings',
+    'Indiana Jones',
+    'Jurassic World',
+    'NINJAGO',
+    'Minecraft',
+    'Classic',
+    'City',
+  ];
 
   async paginateAndFilter(
     query: ILegoSetsQuery,
@@ -66,5 +82,52 @@ export class LegoSetsService {
       limit: 20,
       where: { name: { [Op.like]: `%${str}%` } },
     });
+  }
+
+  async createLegoSet(
+    theme: string,
+    price: number,
+    name: string,
+    description: string,
+    images: string[],
+    in_stock: number,
+  ): Promise<LegoSets> {
+    if (!this.isValidTheme(theme)) {
+      throw new BadRequestException('Invalid theme');
+    }
+    const vendorCode = this.generateVendorCode();
+    const imagesJson = JSON.stringify([...Array(3)].map(() => `${images}`));
+    const legoSet = new LegoSets({
+      theme,
+      price,
+      name,
+      description,
+      images: imagesJson,
+      in_stock: in_stock,
+      vendor_code: vendorCode,
+    });
+    return legoSet.save();
+  }
+
+  isValidTheme(theme: string): boolean {
+    const themes = [
+      'Star Wars',
+      'Batman',
+      'Harry Potter',
+      'Disney',
+      'Marvel',
+      'Lord of the Rings',
+      'Indiana Jones',
+      'Jurassic World',
+      'NINJAGO',
+      'Minecraft',
+      'Classic',
+      'City',
+    ];
+    return themes.includes(theme);
+  }
+
+  generateVendorCode(): string {
+    return faker.internet.password();
   }
 }
