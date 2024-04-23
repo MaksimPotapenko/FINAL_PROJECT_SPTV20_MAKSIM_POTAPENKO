@@ -12,21 +12,6 @@ export class LegoSetsService {
     private legoSetsModel: typeof LegoSets,
   ) {}
 
-  private readonly themes = [
-    'Star Wars',
-    'Batman',
-    'Harry Potter',
-    'Disney',
-    'Marvel',
-    'Lord of the Rings',
-    'Indiana Jones',
-    'Jurassic World',
-    'NINJAGO',
-    'Minecraft',
-    'Classic',
-    'City',
-  ];
-
   async paginateAndFilter(
     query: ILegoSetsQuery,
   ): Promise<{ count: number; rows: LegoSets[] }> {
