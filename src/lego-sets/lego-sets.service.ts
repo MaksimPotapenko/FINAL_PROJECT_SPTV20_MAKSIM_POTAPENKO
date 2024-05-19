@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Op } from 'sequelize';
 import { LegoSets } from './lego-sets.model';
@@ -114,5 +118,11 @@ export class LegoSetsService {
 
   generateVendorCode(): string {
     return faker.internet.password();
+  }
+
+  async deleteLegoSet(id: string): Promise<void> {
+    const set = await this.legoSetsModel.findOne({ where: { id } });
+
+    await set.destroy();
   }
 }

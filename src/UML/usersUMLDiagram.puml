@@ -1,0 +1,29 @@
+
+class User {
+  -username: string
+  -password: string
+  -email: string
+}
+
+class UsersService {
+  -userModel: typeof User
+  +findOne(filter: { where: { id?: string; username?: string; email?: string } }): Promise<User>
+  +create(createUserDto: CreateUserDto): Promise<User | { warningMessage: string }>
+}
+
+class UsersController {
+  -usersService: UsersService
+  +createUser(createUserDto: CreateUserDto): any
+  +login(req: Request): any
+  +loginCheck(req: Request): any
+  +logout(req: Request): any
+}
+
+class CreateUserDto {
+  -username: string
+  -password: string
+  -email: string
+}
+
+User --* UsersService
+UsersService --* UsersController

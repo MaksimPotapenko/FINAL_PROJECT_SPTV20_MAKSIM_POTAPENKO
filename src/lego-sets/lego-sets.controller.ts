@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Delete,
   Get,
   Header,
   HttpCode,
@@ -90,5 +91,11 @@ export class LegoSetsController {
       images,
       in_stock,
     );
+  }
+
+  @UseGuards(AuthenticatedGuard)
+  @Delete('delete/:id')
+  deleteLegoSet(@Param('id') id: string): Promise<void> {
+    return this.legoSetsService.deleteLegoSet(id);
   }
 }

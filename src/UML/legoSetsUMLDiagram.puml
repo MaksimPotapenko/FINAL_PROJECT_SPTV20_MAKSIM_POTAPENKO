@@ -1,0 +1,39 @@
+
+class LegoSets {
+  -theme: string
+  -price: number = 0
+  -vendor_code: string = faker.internet.password()
+  -name: string
+  -description: string
+  -images: string
+  -in_stock: number = 0
+  -bestseller: boolean = false
+  -new: boolean = true
+  -popularity: number = 1
+}
+
+class LegoSetsService {
+  +paginateAndFilter(query: ILegoSetsQuery): Promise<{ count: number; rows: LegoSets[] }>
+  +bestsellers(): Promise<{ count: number; rows: LegoSets[] }>
+  +new(): Promise<{ count: number; rows: LegoSets[] }>
+  +findOne(id: number | string): Promise<LegoSets>
+  +findOneByName(name: string): Promise<LegoSets>
+  +searchByString(str: string): Promise<{ count: number; rows: LegoSets[] }>
+  +createLegoSet(theme: string, price: number, name: string, description: string, images: string[], in_stock: number): Promise<LegoSets>
+  -isValidTheme(theme: string): boolean
+  -generateVendorCode(): string
+}
+
+class LegoSetsController {
+  -legoSetsService: LegoSetsService
+  +paginateAndFilter(query): any
+  +getOne(id: string): any
+  +getBestsellers(): any
+  +getNew(): any
+  +search({ search }: { search: string }): any
+  +getByName({ name }: { name: string }): any
+  +createLegoSet(theme: string, price: number, name: string, description: string, images: string[], in_stock: number): any
+}
+
+LegoSets --* LegoSetsService
+LegoSetsService --* LegoSetsController

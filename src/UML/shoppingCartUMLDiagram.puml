@@ -1,0 +1,44 @@
+
+class ShoppingCart {
+  -userId: number
+  -setId: number = 0
+  -theme: string
+  -price: number = 0
+  -name: string
+  -image: string
+  -in_stock: number = 0
+  -count: number = 1
+  -total_price: number = 0
+}
+
+class ShoppingCartService {
+  -shoppingCartModel: typeof ShoppingCart
+  -usersService: UsersService
+  -legoSetsService: LegoSetsService
+  +findAll(userId: number | string): Promise<ShoppingCart[]>
+  +add(addToCartDto: AddToCartDto)
+  +updateCount(count: number, setId: number | string): Promise<{ count: number }>
+  +updateTotalPrice(total_price: number, setId: number | string): Promise<{ total_price: number }>
+  +remove(setId: number | string): Promise<void>
+  +removeAll(userId: number | string): Promise<void>
+}
+
+class ShoppingCartController {
+  -shoppingCartService: ShoppingCartService
+  +getAll(userId: string): any
+  +addToCar(addToCartDto: AddToCartDto): any
+  +updateCount(count: number, setId: string): any
+  +updateTotalPrice(total_price: number, setId: string): any
+  +removeOne(setId: string): any
+  +removeAll(userId: string): any
+}
+
+class AddToCartDto {
+  -username: string
+  -userId?: number
+  -setId: number
+}
+
+ShoppingCart --* ShoppingCartService
+ShoppingCartService --* ShoppingCartController
+AddToCartDto -- ShoppingCartController

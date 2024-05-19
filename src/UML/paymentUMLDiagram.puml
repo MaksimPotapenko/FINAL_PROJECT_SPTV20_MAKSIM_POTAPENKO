@@ -1,0 +1,26 @@
+
+
+class PaymentService {
+  +makePayment(makePaymentDto: MakePaymentDto)
+  +checkPayment(checkPaymentDto: CheckPaymentDto)
+}
+
+class PaymentController {
+  -paymentService: PaymentService
+  +makePayment(makePaymentDto: MakePaymentDto)
+  +checkPayment(checkPaymentDto: CheckPaymentDto)
+}
+
+class MakePaymentDto {
+  -amount: number
+  -description?: string
+}
+
+class CheckPaymentDto {
+  -paymentId: number
+}
+
+PaymentService ..> MakePaymentDto : makePayment
+PaymentService ..> CheckPaymentDto : checkPayment
+PaymentController ..> MakePaymentDto : makePayment
+PaymentController ..> CheckPaymentDto : checkPayment
